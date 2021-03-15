@@ -29,6 +29,7 @@ from config import Configuration, CannotLoadConfiguration
 from coverage import (
     CollectionCoverageProviderJob,
     CoverageProviderProgress,
+    OPDSEntryWorkCoverageProvider,
 )
 from external_search import (
     ExternalSearchIndex,
@@ -147,6 +148,10 @@ class Script(object):
                 except ValueError, e:
                     continue
         raise ValueError("Could not parse time: %s" % time_string)
+
+    @classmethod
+    def run_script(cls):
+        cls().run()
 
     def __init__(self, _db=None):
         """Basic constructor.
@@ -435,6 +440,10 @@ class RunWorkCoverageProviderScript(RunCollectionCoverageProviderScript):
 
     def get_providers(self, _db, provider_class, **kwargs):
         return [provider_class(_db, **kwargs)]
+
+
+def RunOPDSEntryWorkCoverageProvider():
+    RunWorkCoverageProviderScript(OPDSEntryWorkCoverageProvider).run()
 
 
 class InputScript(Script):

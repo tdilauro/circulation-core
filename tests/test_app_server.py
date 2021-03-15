@@ -10,25 +10,25 @@ from flask_babel import (
     lazy_gettext as _
 )
 
-from ..testing import (
+from simplified.core.testing import (
     DatabaseTest,
 )
 
-from ..opds import TestAnnotator
+from simplified.core.opds import TestAnnotator
 
-from ..model import (
+from simplified.core.model import (
     Identifier,
     ConfigurationSetting,
 )
 
-from ..lane import (
+from simplified.core.lane import (
     Facets,
     Pagination,
     SearchFacets,
     WorkList,
 )
 
-from ..app_server import (
+from simplified.core.app_server import (
     HeartbeatController,
     URNLookupController,
     URNLookupHandler,
@@ -39,22 +39,22 @@ from ..app_server import (
     load_pagination_from_request,
 )
 
-from ..config import Configuration
+from simplified.core.config import Configuration
 
-from ..log import LogConfiguration
+from simplified.core.log import LogConfiguration
 
-from ..entrypoint import (
+from simplified.core.entrypoint import (
     AudiobooksEntryPoint,
     EbooksEntryPoint,
     EntryPoint,
 )
 
-from ..problem_details import (
+from simplified.core.problem_details import (
     INVALID_INPUT,
     INVALID_URN,
 )
 
-from ..util.opds_writer import (
+from simplified.core.util.opds_writer import (
     OPDSFeed,
     OPDSMessage,
 )

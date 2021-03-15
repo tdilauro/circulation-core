@@ -1,39 +1,39 @@
 # encoding: utf-8
 import pytest
 import datetime
-from ...external_search import MockExternalSearchIndex
+from simplified.core.external_search import MockExternalSearchIndex
 from mock import MagicMock
 import os
 from psycopg2.extras import NumericRange
 import random
-from ...testing import DatabaseTest
-from ...classifier import (
+from simplified.core.testing import DatabaseTest
+from simplified.core.classifier import (
     Classifier,
     Fantasy,
     Romance,
     Science_Fiction,
 )
-from ...model import (
+from simplified.core.model import (
     get_one_or_create,
     tuple_to_numericrange,
 )
-from ...model.coverage import WorkCoverageRecord
-from ...model.classification import (
+from simplified.core.model.coverage import WorkCoverageRecord
+from simplified.core.model.classification import (
     Genre,
     Subject,
 )
-from ...model.complaint import Complaint
-from ...model.contributor import Contributor
-from ...model.datasource import DataSource
-from ...model.edition import Edition
-from ...model.identifier import Identifier
-from ...model.licensing import LicensePool
-from ...model.resource import (
+from simplified.core.model.complaint import Complaint
+from simplified.core.model.contributor import Contributor
+from simplified.core.model.datasource import DataSource
+from simplified.core.model.edition import Edition
+from simplified.core.model.identifier import Identifier
+from simplified.core.model.licensing import LicensePool
+from simplified.core.model.resource import (
     Hyperlink,
     Representation,
     Resource,
 )
-from ...model.work import (
+from simplified.core.model.work import (
     Work,
     WorkGenre,
 )

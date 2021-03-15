@@ -1,10 +1,10 @@
-from ...classifier import (
+from simplified.core.classifier import (
     Classifier,
     AgeOrGradeClassifier,
     LCSHClassifier as LCSH,
 )
 
-from ...classifier.age import (
+from simplified.core.classifier.age import (
     GradeLevelClassifier,
     InterestLevelClassifier,
     AgeClassifier,

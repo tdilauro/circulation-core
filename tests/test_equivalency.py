@@ -1,4 +1,4 @@
-from ..model import (
+from simplified.core.model import (
     CirculationEvent,
     DataSource,
     get_one_or_create,
@@ -9,7 +9,7 @@ from ..model import (
     PresentationCalculationPolicy,
 )
 
-from ..testing import (
+from simplified.core.testing import (
     DatabaseTest,
 )
 

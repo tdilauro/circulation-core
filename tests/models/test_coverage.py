@@ -1,14 +1,14 @@
 # encoding: utf-8
 import datetime
-from ...testing import DatabaseTest
-from ...model.coverage import (
+from simplified.core.testing import DatabaseTest
+from simplified.core.model.coverage import (
     BaseCoverageRecord,
     CoverageRecord,
     Timestamp,
     WorkCoverageRecord,
 )
-from ...model.datasource import DataSource
-from ...model.identifier import Identifier
+from simplified.core.model.datasource import DataSource
+from simplified.core.model.identifier import Identifier
 
 class TestTimestamp(DatabaseTest):
 

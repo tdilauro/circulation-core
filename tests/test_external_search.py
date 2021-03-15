@@ -8,7 +8,7 @@ import re
 import time
 from psycopg2.extras import NumericRange
 
-from ..testing import (
+from simplified.core.testing import (
     DatabaseTest,
 )
 
@@ -33,11 +33,11 @@ from elasticsearch_dsl.query import (
 )
 from elasticsearch.exceptions import ElasticsearchException
 
-from ..config import (
+from simplified.core.config import (
     Configuration,
     CannotLoadConfiguration,
 )
-from ..lane import (
+from simplified.core.lane import (
     Facets,
     FeaturedFacets,
     Lane,
@@ -45,11 +45,11 @@ from ..lane import (
     SearchFacets,
     WorkList,
 )
-from ..metadata_layer import (
+from simplified.core.metadata_layer import (
     ContributorData,
     IdentifierData,
 )
-from ..model import (
+from simplified.core.model import (
     ConfigurationSetting,
     Contribution,
     Contributor,
@@ -61,7 +61,7 @@ from ..model import (
     WorkCoverageRecord,
     get_one_or_create,
 )
-from ..external_search import (
+from simplified.core.external_search import (
     CurrentMapping,
     ExternalSearchIndex,
     Filter,
@@ -77,11 +77,11 @@ from ..external_search import (
     mock_search_index,
 )
 
-from ..classifier import Classifier
+from simplified.core.classifier import Classifier
 
-from ..problem_details import INVALID_INPUT
+from simplified.core.problem_details import INVALID_INPUT
 
-from ..testing import (
+from simplified.core.testing import (
     ExternalSearchTest,
     EndToEndSearchTest,
 )

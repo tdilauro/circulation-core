@@ -3,36 +3,36 @@ import pytest
 from mock import create_autospec, MagicMock
 import datetime
 import json
-from ...testing import DatabaseTest
-from ...config import Configuration
-from ...model import (
+from simplified.core.testing import DatabaseTest
+from simplified.core.config import Configuration
+from simplified.core.model import (
     create,
     get_one_or_create,
 )
-from ...model.coverage import (
+from simplified.core.model.coverage import (
     CoverageRecord,
     WorkCoverageRecord,
 )
-from ...model.circulationevent import CirculationEvent
-from ...model.collection import Collection, HasExternalIntegrationPerCollection, CollectionConfigurationStorage
-from ...model.complaint import Complaint
-from ...model.configuration import (
+from simplified.core.model.circulationevent import CirculationEvent
+from simplified.core.model.collection import Collection, HasExternalIntegrationPerCollection, CollectionConfigurationStorage
+from simplified.core.model.complaint import Complaint
+from simplified.core.model.configuration import (
     ConfigurationSetting,
     ExternalIntegration,
 )
-from ...model.customlist import CustomList
-from ...model.datasource import DataSource
-from ...model.edition import Edition
-from ...model.hasfulltablecache import HasFullTableCache
-from ...model.identifier import Identifier
-from ...model.licensing import (
+from simplified.core.model.customlist import CustomList
+from simplified.core.model.datasource import DataSource
+from simplified.core.model.edition import Edition
+from simplified.core.model.hasfulltablecache import HasFullTableCache
+from simplified.core.model.identifier import Identifier
+from simplified.core.model.licensing import (
     Hold,
     Loan,
     License,
     LicensePool,
 )
-from ...model.work import Work
-from ...util.string_helpers import base64
+from simplified.core.model.work import Work
+from simplified.core.util.string_helpers import base64
 
 
 class TestCollection(DatabaseTest):

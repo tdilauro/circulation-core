@@ -7,14 +7,14 @@ configured, not that the code is correct.
 
 import datetime
 
-from ..testing import DatabaseTest
+from simplified.core.testing import DatabaseTest
 
-from ..selftest import (
+from simplified.core.selftest import (
     SelfTestResult,
     HasSelfTests,
 )
 
-from ..util.http import IntegrationException
+from simplified.core.util.http import IntegrationException
 
 class TestSelfTestResult(DatabaseTest):
 

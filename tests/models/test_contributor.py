@@ -1,10 +1,10 @@
 # encoding: utf-8
-from ...testing import DatabaseTest
-from ...model import get_one_or_create
-from ...model.contributor import Contributor
-from ...model.datasource import DataSource
-from ...model.edition import Edition
-from ...model.identifier import Identifier
+from simplified.core.testing import DatabaseTest
+from simplified.core.model import get_one_or_create
+from simplified.core.model.contributor import Contributor
+from simplified.core.model.datasource import DataSource
+from simplified.core.model.edition import Edition
+from simplified.core.model.identifier import Identifier
 
 class TestContributor(DatabaseTest):
 

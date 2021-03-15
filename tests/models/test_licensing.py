@@ -5,18 +5,18 @@ import pytest
 import datetime
 from sqlalchemy.exc import IntegrityError
 
-from ...mock_analytics_provider import MockAnalyticsProvider
-from ...model import create
-from ...model.circulationevent import CirculationEvent
-from ...model.collection import CollectionMissing
-from ...model.complaint import Complaint
-from ...model.constants import MediaTypes
-from ...model.contributor import Contributor
-from ...model.coverage import WorkCoverageRecord
-from ...model.datasource import DataSource
-from ...model.edition import Edition
-from ...model.identifier import Identifier
-from ...model.licensing import (
+from simplified.core.mock_analytics_provider import MockAnalyticsProvider
+from simplified.core.model import create
+from simplified.core.model.circulationevent import CirculationEvent
+from simplified.core.model.collection import CollectionMissing
+from simplified.core.model.complaint import Complaint
+from simplified.core.model.constants import MediaTypes
+from simplified.core.model.contributor import Contributor
+from simplified.core.model.coverage import WorkCoverageRecord
+from simplified.core.model.datasource import DataSource
+from simplified.core.model.edition import Edition
+from simplified.core.model.identifier import Identifier
+from simplified.core.model.licensing import (
     DeliveryMechanism,
     Hold,
     License,
@@ -25,8 +25,8 @@ from ...model.licensing import (
     Loan,
     RightsStatus,
 )
-from ...model.resource import Hyperlink, Representation
-from ...testing import DatabaseTest
+from simplified.core.model.resource import Hyperlink, Representation
+from simplified.core.testing import DatabaseTest
 
 
 class TestDeliveryMechanism(DatabaseTest):

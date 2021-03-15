@@ -1,5 +1,5 @@
-from ... import classifier
-from ...classifier import *
+from simplified.core import classifier
+from simplified.core.classifier import *
 
 class TestSimplifiedGenreClassifier(object):
 

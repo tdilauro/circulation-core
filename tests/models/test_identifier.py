@@ -7,12 +7,12 @@ from lxml import etree
 from mock import PropertyMock, create_autospec
 from parameterized import parameterized
 
-from ...model import PresentationCalculationPolicy
-from ...model.datasource import DataSource
-from ...model.edition import Edition
-from ...model.identifier import Identifier
-from ...model.resource import Hyperlink, Representation
-from ...testing import DatabaseTest
+from simplified.core.model import PresentationCalculationPolicy
+from simplified.core.model.datasource import DataSource
+from simplified.core.model.edition import Edition
+from simplified.core.model.identifier import Identifier
+from simplified.core.model.resource import Hyperlink, Representation
+from simplified.core.testing import DatabaseTest
 
 
 class TestIdentifier(DatabaseTest):

@@ -2,10 +2,10 @@ import pytest
 from mock import patch
 from parameterized import parameterized
 
-from ...testing import DatabaseTest
-from ...lcp.credential import LCPCredentialFactory, LCPCredentialType
-from ...lcp.exceptions import LCPError
-from ...model import Credential, DataSource
+from simplified.core.testing import DatabaseTest
+from simplified.core.lcp.credential import LCPCredentialFactory, LCPCredentialType
+from simplified.core.lcp.exceptions import LCPError
+from simplified.core.model import Credential, DataSource
 
 
 class TestCredentialFactory(DatabaseTest):

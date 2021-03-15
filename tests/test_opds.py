@@ -9,37 +9,37 @@ from flask_babel import lazy_gettext as _
 from lxml import etree
 from psycopg2.extras import NumericRange
 
-from ..testing import (
+from simplified.core.testing import (
     DatabaseTest,
 )
-from ..classifier import (
+from simplified.core.classifier import (
     Classifier,
     Contemporary_Romance,
     Epic_Fantasy,
     Fantasy,
     History,
 )
-from ..config import (
+from simplified.core.config import (
     Configuration,
     temp_config,
 )
-from ..entrypoint import (
+from simplified.core.entrypoint import (
     AudiobooksEntryPoint,
     EbooksEntryPoint,
     EntryPoint,
     EverythingEntryPoint,
 )
-from ..external_search import MockExternalSearchIndex
-from ..facets import FacetConstants
-from ..lane import (
+from simplified.core.external_search import MockExternalSearchIndex
+from simplified.core.facets import FacetConstants
+from simplified.core.lane import (
     Facets,
     FeaturedFacets,
     Pagination,
     SearchFacets,
     WorkList,
 )
-from ..lcp.credential import LCPCredentialFactory
-from ..model import (
+from simplified.core.lcp.credential import LCPCredentialFactory
+from simplified.core.model import (
     CachedFeed,
     Contributor,
     CustomList,
@@ -55,7 +55,7 @@ from ..model import (
     get_one,
     create,
 )
-from ..opds import (
+from simplified.core.opds import (
     AcquisitionFeed,
     Annotator,
     LookupAcquisitionFeed,
@@ -66,13 +66,13 @@ from ..opds import (
     TestAnnotatorWithGroup,
     TestUnfulfillableAnnotator
 )
-from ..opds_import import OPDSXMLParser
-from ..util.flask_util import (
+from simplified.core.opds_import import OPDSXMLParser
+from simplified.core.util.flask_util import (
     OPDSEntryResponse,
     OPDSFeedResponse,
     Response,
 )
-from ..util.opds_writer import (
+from simplified.core.util.opds_writer import (
     AtomFeed,
     OPDSFeed,
     OPDSMessage,

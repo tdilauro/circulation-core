@@ -6,17 +6,17 @@ from mock import (
     MagicMock,
 )
 
-from ...testing import DatabaseTest
-from ...classifier import Classifier
-from ...model import (
+from simplified.core.testing import DatabaseTest
+from simplified.core.classifier import Classifier
+from simplified.core.model import (
     create,
     tuple_to_numericrange,
 )
-from ...model.credential import Credential
-from ...model.datasource import DataSource
-from ...model.library import Library
-from ...model.licensing import PolicyException
-from ...model.patron import (
+from simplified.core.model.credential import Credential
+from simplified.core.model.datasource import DataSource
+from simplified.core.model.library import Library
+from simplified.core.model.licensing import PolicyException
+from simplified.core.model.patron import (
     Annotation,
     Hold,
     Loan,

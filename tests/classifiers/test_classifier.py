@@ -1,17 +1,17 @@
 """Test logic surrounding classification schemes."""
 
-from ...testing import DatabaseTest
+from simplified.core.testing import DatabaseTest
 from collections import Counter
 from psycopg2.extras import NumericRange
-from ...model import (
+from simplified.core.model import (
     Genre,
     DataSource,
     Subject,
     Classification,
 )
 
-from ... import classifier
-from ...classifier import (
+from simplified.core import classifier
+from simplified.core.classifier import (
         Classifier,
         Lowercased,
         WorkClassifier,
@@ -22,18 +22,18 @@ from ...classifier import (
         FreeformAudienceClassifier,
     )
 
-from ...classifier.age import (
+from simplified.core.classifier.age import (
     AgeClassifier,
     GradeLevelClassifier,
     InterestLevelClassifier,
 )
-from ...classifier.ddc import DeweyDecimalClassifier as DDC
-from ...classifier.keyword import (
+from simplified.core.classifier.ddc import DeweyDecimalClassifier as DDC
+from simplified.core.classifier.keyword import (
     LCSHClassifier as LCSH,
     FASTClassifier as FAST,
 )
-from ...classifier.lcc import LCCClassifier as LCC
-from ...classifier.simplified import SimplifiedGenreClassifier
+from simplified.core.classifier.lcc import LCCClassifier as LCC
+from simplified.core.classifier.simplified import SimplifiedGenreClassifier
 
 genres = dict()
 GenreData.populate(globals(), genres, fiction_genres, nonfiction_genres)

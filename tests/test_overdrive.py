@@ -4,7 +4,7 @@ import os
 import json
 import pkgutil
 
-from ..overdrive import (
+from simplified.core.overdrive import (
     OverdriveAPI,
     MockOverdriveAPI,
     OverdriveAdvantageAccount,
@@ -12,15 +12,15 @@ from ..overdrive import (
     OverdriveBibliographicCoverageProvider,
 )
 
-from ..coverage import (
+from simplified.core.coverage import (
     CoverageFailure,
 )
 
-from ..config import CannotLoadConfiguration
+from simplified.core.config import CannotLoadConfiguration
 
-from ..metadata_layer import LinkData
+from simplified.core.metadata_layer import LinkData
 
-from ..model import (
+from simplified.core.model import (
     Collection,
     Contributor,
     DeliveryMechanism,
@@ -33,16 +33,16 @@ from ..model import (
     MediaTypes,
     Hyperlink,
 )
-from ..scripts import RunCollectionCoverageProviderScript
+from simplified.core.scripts import RunCollectionCoverageProviderScript
 
-from ..testing import MockRequestsResponse
+from simplified.core.testing import MockRequestsResponse
 
-from ..util.http import (
+from simplified.core.util.http import (
     BadResponseException,
     HTTP,
 )
 
-from ..testing import DatabaseTest
+from simplified.core.testing import DatabaseTest
 
 
 class OverdriveTest(DatabaseTest):

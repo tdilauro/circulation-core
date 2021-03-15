@@ -1,6 +1,6 @@
-from ... import classifier
-from ...classifier import *
-from ...classifier.bic import BICClassifier as BIC
+from simplified.core import classifier
+from simplified.core.classifier import *
+from simplified.core.classifier.bic import BICClassifier as BIC
 
 class TestBIC(object):
 

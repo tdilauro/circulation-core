@@ -8,10 +8,21 @@ from mock import MagicMock, create_autospec
 from parameterized import parameterized
 from sqlalchemy.exc import IntegrityError
 
-from ...config import CannotLoadConfiguration, Configuration
-from ...model import create, get_one
-from ...model.collection import Collection
-from ...model.configuration import (
+from simplified.core.testing import DatabaseTest
+from simplified.core.config import (
+    CannotLoadConfiguration,
+    Configuration,
+)
+from simplified.core.model import (
+    create,
+    get_one,
+)
+from simplified.core.model.collection import Collection
+from simplified.core.model.configuration import (
+    ConfigurationSetting,
+    ExternalIntegration,
+    ExternalIntegrationLink,
+    ConfigurationStorage,
     ConfigurationAttribute,
     ConfigurationAttributeType,
     ConfigurationGrouping,
@@ -23,8 +34,12 @@ from ...model.configuration import (
     ExternalIntegrationLink,
     HasExternalIntegration,
 )
+<<<<<<< HEAD
 from ...model.datasource import DataSource
 from ...testing import DatabaseTest
+=======
+from simplified.core.model.datasource import DataSource
+>>>>>>> 5746c79c... Use pacakge name in scripts
 
 
 class TestConfigurationSetting(DatabaseTest):

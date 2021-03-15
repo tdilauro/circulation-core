@@ -1,6 +1,6 @@
 # encoding: utf-8
-from ...classifier import *
-from ...classifier.overdrive import OverdriveClassifier as Overdrive
+from simplified.core.classifier import *
+from simplified.core.classifier.overdrive import OverdriveClassifier as Overdrive
 
 class TestOverdriveClassifier(object):
 

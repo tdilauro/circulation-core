@@ -6,15 +6,15 @@ from copy import deepcopy
 import pytest
 from parameterized import parameterized
 
-from ..testing import (
+from simplified.core.testing import (
     DatabaseTest,
     DummyHTTPClient,
     DummyMetadataClient,
 )
-from ..analytics import Analytics
-from ..classifier import Classifier
-from ..classifier import NO_VALUE, NO_NUMBER
-from ..metadata_layer import (
+from simplified.core.analytics import Analytics
+from simplified.core.classifier import Classifier
+from simplified.core.classifier import NO_VALUE, NO_NUMBER
+from simplified.core.metadata_layer import (
     CSVMetadataImporter,
     CirculationData,
     ContributorData,
@@ -27,7 +27,7 @@ from ..metadata_layer import (
     SubjectData,
     TimestampData,
 )
-from ..model import (
+from simplified.core.model import (
     Contributor,
     CoverageRecord,
     DataSource,
@@ -42,9 +42,9 @@ from ..model import (
     Work,
     WorkCoverageRecord,
 )
-from ..model.configuration import ExternalIntegrationLink
-from ..s3 import MockS3Uploader
-from ..util.http import RemoteIntegrationException
+from simplified.core.model.configuration import ExternalIntegrationLink
+from simplified.core.s3 import MockS3Uploader
+from simplified.core.util.http import RemoteIntegrationException
 
 
 class TestIdentifierData(object):

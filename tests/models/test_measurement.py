@@ -1,12 +1,12 @@
 import datetime
 
-from ...model import (
+from simplified.core.model import (
     DataSource,
     Measurement,
     get_one_or_create
 )
 
-from ...testing import (
+from simplified.core.testing import (
     DatabaseTest,
 )
 

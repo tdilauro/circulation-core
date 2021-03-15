@@ -1,11 +1,11 @@
 import threading
 from contextlib import contextmanager
 
-from ...model import (
+from simplified.core.model import (
     Identifier,
     SessionManager,
 )
-from ...util.worker_pools import (
+from simplified.core.util.worker_pools import (
     DatabaseJob,
     DatabasePool,
     DatabaseWorker,
@@ -15,7 +15,7 @@ from ...util.worker_pools import (
     Worker,
 )
 
-from ...testing import DatabaseTest
+from simplified.core.testing import DatabaseTest
 
 
 class TestPool(object):

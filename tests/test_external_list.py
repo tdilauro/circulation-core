@@ -1,18 +1,18 @@
 # encoding: utf-8
 import datetime
 
-from ..testing import (
+from simplified.core.testing import (
     DatabaseTest,
     DummyMetadataClient,
 )
 
-from ..model import (
+from simplified.core.model import (
     DataSource,
     Edition,
     Identifier,
     Subject,
 )
-from ..external_list import (
+from simplified.core.external_list import (
     CustomListFromCSV,
     MembershipManager,
     ClassificationBasedMembershipManager,

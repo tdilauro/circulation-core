@@ -1,10 +1,10 @@
 import os
 from sqlalchemy.orm.session import Session
 
-from ..testing import DatabaseTest
+from simplified.core.testing import DatabaseTest
 
-from ..config import Configuration as BaseConfiguration
-from ..model import (
+from simplified.core.config import Configuration as BaseConfiguration
+from simplified.core.model import (
     ConfigurationSetting,
     ExternalIntegration,
 )

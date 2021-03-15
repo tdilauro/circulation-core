@@ -1,6 +1,6 @@
 import re
 from lxml import etree
-from ...util.opds_writer import (
+from simplified.core.util.opds_writer import (
     AtomFeed,
     OPDSMessage
 )

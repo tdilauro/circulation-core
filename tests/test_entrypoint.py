@@ -1,19 +1,19 @@
 import pytest
 
-from ..testing import DatabaseTest
+from simplified.core.testing import DatabaseTest
 import json
-from ..model import (
+from simplified.core.model import (
     Edition,
     Work,
 )
-from ..entrypoint import (
+from simplified.core.entrypoint import (
     EntryPoint,
     EbooksEntryPoint,
     EverythingEntryPoint,
     AudiobooksEntryPoint,
     MediumEntryPoint,
 )
-from ..external_search import Filter
+from simplified.core.external_search import Filter
 
 
 class TestEntryPoint(DatabaseTest):

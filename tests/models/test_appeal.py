@@ -1,8 +1,8 @@
-from ...testing import (
+from simplified.core.testing import (
     DatabaseTest,
 )
 
-from ...model import (
+from simplified.core.model import (
     Work,
 )
 

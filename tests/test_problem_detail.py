@@ -1,7 +1,7 @@
 # encoding: utf-8
 import json
 
-from ..util.problem_detail import (
+from simplified.core.util.problem_detail import (
     ProblemDetail,
 )
 

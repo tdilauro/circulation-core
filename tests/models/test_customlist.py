@@ -1,13 +1,13 @@
 # encoding: utf-8
 import datetime
-from ...testing import DatabaseTest
-from ...model import get_one_or_create
-from ...model.coverage import WorkCoverageRecord
-from ...model.customlist import (
+from simplified.core.testing import DatabaseTest
+from simplified.core.model import get_one_or_create
+from simplified.core.model.coverage import WorkCoverageRecord
+from simplified.core.model.customlist import (
     CustomList,
     CustomListEntry,
 )
-from ...model.datasource import DataSource
+from simplified.core.model.datasource import DataSource
 import pytest
 
 class TestCustomList(DatabaseTest):

@@ -1,7 +1,7 @@
 import datetime
 import os
 
-from ..model import (
+from simplified.core.model import (
     Contribution,
     Contributor,
     DataSource,
@@ -12,8 +12,8 @@ from ..model import (
     MediaTypes,
     Work,
 )
-from ..opds2_import import OPDS2Importer
-from .test_opds_import import OPDSTest
+from simplified.core.opds2_import import OPDS2Importer
+from test_opds_import import OPDSTest
 
 
 class TestOPDS2Importer(OPDSTest):

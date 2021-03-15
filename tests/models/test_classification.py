@@ -2,14 +2,14 @@
 import pytest
 from psycopg2.extras import NumericRange
 from sqlalchemy.exc import IntegrityError
-from ...testing import DatabaseTest
-from ...classifier import Classifier
-from ...model import (
+from simplified.core.testing import DatabaseTest
+from simplified.core.classifier import Classifier
+from simplified.core.model import (
     create,
     get_one,
     get_one_or_create,
 )
-from ...model.classification import (
+from simplified.core.model.classification import (
     Subject,
     Genre,
 )

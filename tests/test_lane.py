@@ -9,7 +9,7 @@ from mock import (
 )
 import random
 
-from ..testing import (
+from simplified.core.testing import (
     DatabaseTest,
 )
 
@@ -22,25 +22,25 @@ from sqlalchemy import (
 
 from elasticsearch.exceptions import ElasticsearchException
 
-from ..classifier import Classifier
+from simplified.core.classifier import Classifier
 
-from ..config import Configuration
+from simplified.core.config import Configuration
 
-from ..entrypoint import (
+from simplified.core.entrypoint import (
     AudiobooksEntryPoint,
     EbooksEntryPoint,
     EverythingEntryPoint,
     EntryPoint,
 )
 
-from ..external_search import (
+from simplified.core.external_search import (
     Filter,
     MockExternalSearchIndex,
     WorkSearchResult,
     mock_search_index,
 )
 
-from ..lane import (
+from simplified.core.lane import (
     DatabaseBackedFacets,
     DatabaseBackedWorkList,
     DefaultSortOrderFacets,
@@ -55,7 +55,7 @@ from ..lane import (
     Lane,
 )
 
-from ..model import (
+from simplified.core.model import (
     dump_query,
     get_one_or_create,
     tuple_to_numericrange,
@@ -71,9 +71,9 @@ from ..model import (
     Work,
     WorkGenre,
 )
-from ..problem_details import INVALID_INPUT
-from ..testing import EndToEndSearchTest, LogCaptureHandler
-from ..util.opds_writer import OPDSFeed
+from simplified.core.problem_details import INVALID_INPUT
+from simplified.core.testing import EndToEndSearchTest, LogCaptureHandler
+from simplified.core.util.opds_writer import OPDSFeed
 
 class TestFacetsWithEntryPoint(DatabaseTest):
 

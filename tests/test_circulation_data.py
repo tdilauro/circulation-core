@@ -3,7 +3,7 @@ import pytest
 from copy import deepcopy
 import datetime
 
-from ..metadata_layer import (
+from simplified.core.metadata_layer import (
     CirculationData,
     ContributorData,
     FormatData,
@@ -15,7 +15,7 @@ from ..metadata_layer import (
     SubjectData,
 )
 
-from ..model import (
+from simplified.core.model import (
     Collection,
     DataSource,
     DeliveryMechanism,
@@ -26,14 +26,14 @@ from ..model import (
     RightsStatus,
     Subject,
 )
-from ..model.configuration import ExternalIntegrationLink
+from simplified.core.model.configuration import ExternalIntegrationLink
 
-from ..testing import (
+from simplified.core.testing import (
     DatabaseTest,
     DummyHTTPClient,
 )
 
-from ..s3 import MockS3Uploader
+from simplified.core.s3 import MockS3Uploader
 
 
 class TestCirculationData(DatabaseTest):

@@ -713,15 +713,15 @@ class TestRepresentation(DatabaseTest):
 
 class TestCoverResource(DatabaseTest):
 
-    def test_set_cover(self):
+    def test_set_cover(self, sample_cover_path):
         edition, pool = self._edition(with_license_pool=True)
         original = self._url
         mirror = self._url
         thumbnail_mirror = self._url
-        sample_cover_path = self.sample_cover_path("test-book-cover.png")
+        cover_path = sample_cover_path("test-book-cover.png")
         hyperlink, ignore = pool.add_link(
             Hyperlink.IMAGE, original, edition.data_source, "image/png",
-            content=open(sample_cover_path, 'rb').read()
+            content=open(cover_path, 'rb').read()
         )
         full_rep = hyperlink.resource.representation
         full_rep.set_as_mirrored(mirror)
@@ -738,14 +738,14 @@ class TestCoverResource(DatabaseTest):
         assert mirror == edition.cover_full_url
         assert thumbnail_mirror == edition.cover_thumbnail_url
 
-    def test_set_cover_for_very_small_image(self):
+    def test_set_cover_for_very_small_image(self, sample_cover_path):
         edition, pool = self._edition(with_license_pool=True)
         original = self._url
         mirror = self._url
-        sample_cover_path = self.sample_cover_path("tiny-image-cover.png")
+        cover_path = sample_cover_path("tiny-image-cover.png")
         hyperlink, ignore = pool.add_link(
             Hyperlink.IMAGE, original, edition.data_source, "image/png",
-            open(sample_cover_path, 'rb').read()
+            open(cover_path, 'rb').read()
         )
         full_rep = hyperlink.resource.representation
         full_rep.set_as_mirrored(mirror)
@@ -754,14 +754,14 @@ class TestCoverResource(DatabaseTest):
         assert mirror == edition.cover_full_url
         assert mirror == edition.cover_thumbnail_url
 
-    def test_set_cover_for_smallish_image_uses_full_sized_image_as_thumbnail(self):
+    def test_set_cover_for_smallish_image_uses_full_sized_image_as_thumbnail(self, sample_cover_path):
         edition, pool = self._edition(with_license_pool=True)
         original = self._url
         mirror = self._url
-        sample_cover_path = self.sample_cover_path("tiny-image-cover.png")
+        cover_path = sample_cover_path("tiny-image-cover.png")
         hyperlink, ignore = pool.add_link(
             Hyperlink.IMAGE, original, edition.data_source, "image/png",
-            open(sample_cover_path, 'rb').read()
+            open(cover_path, 'rb').read()
         )
         full_rep = hyperlink.resource.representation
         full_rep.set_as_mirrored(mirror)
@@ -795,8 +795,8 @@ class TestCoverResource(DatabaseTest):
             rep.scale(300, 600, self._url, "text/plain")
         assert "Unsupported destination media type: text/plain" in str(excinfo.value)
 
-    def test_success(self):
-        cover = self.sample_cover_representation("test-book-cover.png")
+    def test_success(self, sample_cover_representation):
+        cover = sample_cover_representation("test-book-cover.png")
         url = self._url
         thumbnail, is_new = cover.scale(300, 600, url, "image/png")
         assert True == is_new
@@ -837,9 +837,9 @@ class TestCoverResource(DatabaseTest):
         # The thumbnail has been regenerated, so it needs to be mirrored again.
         assert None == thumbnail.mirrored_at
 
-    def test_book_with_odd_aspect_ratio(self):
+    def test_book_with_odd_aspect_ratio(self, sample_cover_representation):
         # This book is 1200x600.
-        cover = self.sample_cover_representation("childrens-book-cover.png")
+        cover = sample_cover_representation("childrens-book-cover.png")
         url = self._url
         thumbnail, is_new = cover.scale(300, 400, url, "image/png")
         assert True == is_new
@@ -851,9 +851,9 @@ class TestCoverResource(DatabaseTest):
         # though this takes it below max_height.
         assert 200 == thumbnail.image_height
 
-    def test_book_smaller_than_thumbnail_size(self):
+    def test_book_smaller_than_thumbnail_size(self, sample_cover_representation):
         # This book is 200x200. No thumbnail will be created.
-        cover = self.sample_cover_representation("tiny-image-cover.png")
+        cover = sample_cover_representation("tiny-image-cover.png")
         url = self._url
         thumbnail, is_new = cover.scale(300, 600, url, "image/png")
         assert False == is_new
@@ -881,7 +881,7 @@ class TestCoverResource(DatabaseTest):
         assert jpeg < gif
         assert gif < svg
 
-    def test_best_covers_among(self):
+    def test_best_covers_among(self, sample_cover_representation):
         # Here's a book with a thumbnail image.
         edition, pool = self._edition(with_license_pool=True)
 
@@ -895,7 +895,7 @@ class TestCoverResource(DatabaseTest):
         assert [] == Resource.best_covers_among([resource_with_no_representation])
 
         # Here's an abysmally bad cover.
-        lousy_cover = self.sample_cover_representation("tiny-image-cover.png")
+        lousy_cover = sample_cover_representation("tiny-image-cover.png")
         lousy_cover.image_height=1
         lousy_cover.image_width=10000
         link2, ignore = pool.add_link(
@@ -909,7 +909,7 @@ class TestCoverResource(DatabaseTest):
         assert [] == Resource.best_covers_among([resource_with_lousy_cover])
 
         # Here's a decent cover.
-        decent_cover = self.sample_cover_representation("test-book-cover.png")
+        decent_cover = sample_cover_representation("test-book-cover.png")
         link3, ignore = pool.add_link(
             Hyperlink.THUMBNAIL_IMAGE, self._url, pool.data_source
         )
@@ -927,7 +927,7 @@ class TestCoverResource(DatabaseTest):
         link4, ignore = pool.add_link(
             Hyperlink.THUMBNAIL_IMAGE, self._url, pool.data_source
         )
-        decent_cover_2 = self.sample_cover_representation("test-book-cover.png")
+        decent_cover_2 = sample_cover_representation("test-book-cover.png")
         resource_with_decent_cover_2 = link4.resource
         resource_with_decent_cover_2.representation = decent_cover_2
 
@@ -951,15 +951,15 @@ class TestCoverResource(DatabaseTest):
         # ...the decision becomes easy.
         assert [resource_with_decent_cover] == Resource.best_covers_among(l)
 
-    def test_rejection_and_approval(self):
+    def test_rejection_and_approval(self, sample_cover_representation):
         # Create a Resource.
         edition, pool = self._edition(with_open_access_download=True)
         link = pool.add_link(Hyperlink.IMAGE, self._url, pool.data_source)[0]
         cover = link.resource
 
         # Give it all the right covers.
-        cover_rep = self.sample_cover_representation("test-book-cover.png")
-        thumbnail_rep = self.sample_cover_representation("test-book-cover.png")
+        cover_rep = sample_cover_representation("test-book-cover.png")
+        thumbnail_rep = sample_cover_representation("test-book-cover.png")
         cover.representation = cover_rep
         cover_rep.thumbnails.append(thumbnail_rep)
 
@@ -1011,7 +1011,7 @@ class TestCoverResource(DatabaseTest):
 
         assert last_votes_for_quality+1 == cover.votes_for_quality
 
-    def test_quality_as_thumbnail_image(self):
+    def test_quality_as_thumbnail_image(self, sample_cover_representation):
 
         # Get some data sources ready, since a big part of image
         # quality comes from data source.
@@ -1037,7 +1037,7 @@ class TestCoverResource(DatabaseTest):
         ideal_height = Identifier.IDEAL_IMAGE_HEIGHT
         ideal_width = Identifier.IDEAL_IMAGE_WIDTH
 
-        cover = self.sample_cover_representation("tiny-image-cover.png")
+        cover = sample_cover_representation("tiny-image-cover.png")
         resource.representation = cover
         assert 1.0 == resource.quality_as_thumbnail_image
 

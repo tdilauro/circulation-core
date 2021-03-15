@@ -1941,8 +1941,8 @@ class TestMirroring(OPDSImporterTest):
         return svg
 
     @pytest.fixture()
-    def png(self):
-        with open(self.sample_cover_path("test-book-cover.png")) as png_file:
+    def png(self, sample_cover_path):
+        with open(sample_cover_path("test-book-cover.png")) as png_file:
             png = png_file.read()
         return png
 

@@ -1035,20 +1035,16 @@ class DatabaseTest(object):
             data_source=data_source, weight=weight
         )[0]
 
-    def sample_cover_path(self, name):
-        """The path to the sample cover with the given filename."""
-        base_path = os.path.split(__file__)[0]
-        resource_path = os.path.join(base_path, "tests", "files", "covers")
-        sample_cover_path = os.path.join(resource_path, name)
-        return sample_cover_path
-
-    def sample_cover_representation(self, name):
-        """A Representation of the sample cover with the given filename."""
-        sample_cover_path = self.sample_cover_path(name)
-        return self._representation(
-            media_type="image/png",
-            content=open(sample_cover_path, 'rb').read()
-        )[0]
+    @pytest.fixture()
+    def sample_cover_representation(self, sample_cover_path):
+        def f(name):
+            """A Representation of the sample cover with the given filename."""
+            cover_path = sample_cover_path(name)
+            return self._representation(
+                media_type="image/png",
+                content=open(cover_path, 'rb').read()
+            )[0]
+        return f
 
 
 class SearchClientForTesting(ExternalSearchIndex):
@@ -1540,6 +1536,15 @@ def session_fixture():
 
     if 'TESTING' in os.environ:
         del os.environ['TESTING']
+
+
+@pytest.fixture
+def sample_cover_path(fixture_file_dir):
+    def f(name):
+        """The path to the sample cover with the given filename."""
+        sample_cover_path = os.path.join(fixture_file_dir, "covers", name)
+        return sample_cover_path
+    return f
 
 
 def pytest_configure(config):

@@ -307,13 +307,7 @@ class TestMetadataImporter(DatabaseTest):
         assert "http://largeimage.com/" == edition.cover_full_url
         assert None == edition.cover_thumbnail_url
 
-    def sample_cover_path(self, name):
-        base_path = os.path.split(__file__)[0]
-        resource_path = os.path.join(base_path, "files", "covers")
-        sample_cover_path = os.path.join(resource_path, name)
-        return sample_cover_path
-
-    def test_image_scale_and_mirror(self):
+    def test_image_scale_and_mirror(self, sample_cover_path):
         # Make sure that open access material links are translated to our S3 buckets, and that
         # commercial material links are left as is.
         # Note: mirroring links is now also CirculationData's job.  So the unit tests
@@ -323,13 +317,13 @@ class TestMetadataImporter(DatabaseTest):
 
         mirrors = dict(covers_mirror=MockS3Uploader(),books_mirror=None)
         edition, pool = self._edition(with_license_pool=True)
-        content = open(self.sample_cover_path("test-book-cover.png"), "rb").read()
+        content = open(sample_cover_path("test-book-cover.png"), "rb").read()
         l1 = LinkData(
             rel=Hyperlink.IMAGE, href="http://example.com/",
             media_type=Representation.JPEG_MEDIA_TYPE,
             content=content
         )
-        thumbnail_content = open(self.sample_cover_path("tiny-image-cover.png"), "rb").read()
+        thumbnail_content = open(sample_cover_path("tiny-image-cover.png"), "rb").read()
         l2 = LinkData(
             rel=Hyperlink.THUMBNAIL_IMAGE, href="http://example.com/thumb.jpg",
             media_type=Representation.JPEG_MEDIA_TYPE,
@@ -374,12 +368,12 @@ class TestMetadataImporter(DatabaseTest):
         assert thumbnail.mirror_url.startswith('https://test-cover-bucket.s3.amazonaws.com/scaled/300/')
         assert thumbnail.mirror_url.endswith('cover.png')
 
-    def test_mirror_thumbnail_only(self):
+    def test_mirror_thumbnail_only(self, sample_cover_path):
         # Make sure a thumbnail image is mirrored when there's no cover image.
         mirrors = dict(covers_mirror=MockS3Uploader())
         mirror_type = ExternalIntegrationLink.COVERS
         edition, pool = self._edition(with_license_pool=True)
-        thumbnail_content = open(self.sample_cover_path("tiny-image-cover.png"), "rb").read()
+        thumbnail_content = open(sample_cover_path("tiny-image-cover.png"), "rb").read()
         l = LinkData(
             rel=Hyperlink.THUMBNAIL_IMAGE, href="http://example.com/thumb.png",
             media_type=Representation.PNG_MEDIA_TYPE,
@@ -471,7 +465,7 @@ class TestMetadataImporter(DatabaseTest):
         assert None == link_obj.resource.representation.mirror_url
         assert [] == mirrors[mirror_type].uploaded
 
-    def test_mirror_open_access_link_mirror_failure(self):
+    def test_mirror_open_access_link_mirror_failure(self, sample_cover_path):
         edition, pool = self._edition(with_license_pool=True)
 
         data_source = DataSource.lookup(self._db, DataSource.GUTENBERG)
@@ -482,7 +476,7 @@ class TestMetadataImporter(DatabaseTest):
 
         policy = ReplacementPolicy(mirrors=mirrors, http_get=h.do_get)
 
-        content = open(self.sample_cover_path("test-book-cover.png"), "rb").read()
+        content = open(sample_cover_path("test-book-cover.png"), "rb").read()
         link = LinkData(
             rel=Hyperlink.IMAGE,
             media_type=Representation.JPEG_MEDIA_TYPE,
@@ -525,7 +519,7 @@ class TestMetadataImporter(DatabaseTest):
         # if fetch failed on getting an Hyperlink.OPEN_ACCESS_DOWNLOAD-type epub.
         assert None == pool.license_exception
 
-    def test_mirror_link_bad_media_type(self):
+    def test_mirror_link_bad_media_type(self, sample_cover_path):
         edition, pool = self._edition(with_license_pool=True)
 
         data_source = DataSource.lookup(self._db, DataSource.GUTENBERG)
@@ -536,7 +530,7 @@ class TestMetadataImporter(DatabaseTest):
 
         policy = ReplacementPolicy(mirrors=mirrors, http_get=h.do_get)
 
-        content = open(self.sample_cover_path("test-book-cover.png"), "rb").read()
+        content = open(sample_cover_path("test-book-cover.png"), "rb").read()
 
         # We thought this link was for an image file.
         link = LinkData(

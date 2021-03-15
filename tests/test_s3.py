@@ -895,11 +895,11 @@ class TestS3Uploader(S3UploaderTest):
         # Assert
         assert result == expected_result
 
-    def test_mirror_one(self):
+    def test_mirror_one(self, sample_cover_path):
         edition, pool = self._edition(with_license_pool=True)
         original_cover_location = "http://example.com/a-cover.png"
         content = open(
-            self.sample_cover_path("test-book-cover.png"), 'rb'
+            sample_cover_path("test-book-cover.png"), 'rb'
         ).read()
         cover, ignore = pool.add_link(
             Hyperlink.IMAGE, original_cover_location, edition.data_source,

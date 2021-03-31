@@ -34,12 +34,8 @@ from simplified.core.model.configuration import (
     ExternalIntegrationLink,
     HasExternalIntegration,
 )
-<<<<<<< HEAD
-from ...model.datasource import DataSource
-from ...testing import DatabaseTest
-=======
+
 from simplified.core.model.datasource import DataSource
->>>>>>> 5746c79c... Use pacakge name in scripts
 
 
 class TestConfigurationSetting(DatabaseTest):
